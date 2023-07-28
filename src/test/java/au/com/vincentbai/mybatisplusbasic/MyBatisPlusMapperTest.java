@@ -7,12 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 @SpringBootTest
-public class MyBatisPlusTest {
+public class MyBatisPlusMapperTest {
 
     /**
      * spring ioc中只能托管类的bean，不能托管接口的bean
@@ -118,6 +117,13 @@ public class MyBatisPlusTest {
 
         Map<String, Object> map = userMapper.selectMapById(1L);
         System.out.println(map);
+
+    }
+
+    @Test
+    public void testCount(){
+
+        // there is no check count function in BaseMapper
 
     }
 

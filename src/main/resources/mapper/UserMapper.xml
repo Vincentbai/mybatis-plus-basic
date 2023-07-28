@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="au.com.vincentbai.mybatisplusbasic.mapper.UserMapper">
+
+    <resultMap id="userMap" type="au.com.vincentbai.mybatisplusbasic.pojo.User">
+        <id property="id" column="uid"/>
+        <result property="name" column="name"/>
+        <result property="email" column="email"/>
+        <result property="age" column="age"/>
+    </resultMap>
+
+    <resultMap id="mapResultMap" type="java.util.Map">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="email" column="email"/>
+        <result property="age" column="age"/>
+    </resultMap>
+
+    <!-- Map<String, Object> selectMapById(Long id); -->
+    <select id="selectMapById" resultMap="mapResultMap">
+        select uid, name, age, email from t_user where id = #{id}
+    </select>
+
+    <!--    Page<User> selectPageVo(@Param("page") Page<User> page,@Param("age") Integer age); -->
+    <select id="selectPageVo" resultMap="userMap">
+        select uid, user_name, age, email from t_user where age > #{age}
+    </select>
+
+
+</mapper>

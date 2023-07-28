@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-public class MyBatisPlusPagination {
+public class MyBatisPlusPaginationTest {
 
     @Autowired
     private UserMapper userMapper;
@@ -27,6 +27,18 @@ public class MyBatisPlusPagination {
         System.out.println(userPage.getTotal()); // 返回总记录数
         System.out.println(userPage.hasNext()); // 有没有下一页
         System.out.println(userPage.hasPrevious()); // 有没有上一页
+
+    }
+
+    @Test
+    public void testCustomeQueryWithPage(){
+
+        Page<User> userPage = new Page<>(2, 3);
+
+        Page<User> page = userMapper.selectPageVo(userPage, 18);
+
+        System.out.println(page);
+
 
     }
 
